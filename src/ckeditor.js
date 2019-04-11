@@ -28,6 +28,7 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import Delimiter from './plugins/delimiter';
 
 import '../theme/theme.css';
 
@@ -40,6 +41,7 @@ BalloonEditor.builtinPlugins = [
 	Autoformat,
 	BlockToolbar,
 	Bold,
+	Delimiter,
 	Italic,
 	BlockQuote,
 	CKFinder,
@@ -64,6 +66,7 @@ BalloonEditor.defaultConfig = {
 	blockToolbar: [
 		'heading',
 		'|',
+		'delimiter',
 		'bulletedList',
 		'numberedList',
 		'imageUpload',
