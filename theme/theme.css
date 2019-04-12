@@ -5,5 +5,25 @@
 
 /* Give the block toolbar button some space, moving it a few pixels away from the editable area. */
 .ck.ck-block-toolbar-button {
-	transform: translateX( calc(-1 * var(--ck-spacing-large)) );
+	transform: translateX(calc(-1 * var(--ck-spacing-large)));
+}
+
+.ck-delimiter::before {
+	display: inline-block;
+	content: "***";
+	font-size: 30px;
+	line-height: 65px;
+	height: 30px;
+	letter-spacing: 0.2em;
+	width: 100%;
+	text-align: center;
+}
+
+.ck-delimiter.ck-widget,
+.ck-delimiter.ck-widget:hover,
+.ck-delimiter.ck-widget_selected,
+.ck-delimiter.ck-widget_selected:hover {
+	outline: none !important;
+	transition: none !important;
+
 }
