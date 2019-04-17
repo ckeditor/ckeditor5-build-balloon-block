@@ -28,7 +28,11 @@
 
 <script src="../build/ckeditor.js"></script>
 <script>
-	BalloonEditor.create( document.querySelector( '#editor' ) )
+	BalloonEditor.create( document.querySelector( '#editor' ), {
+		fileUploadOptions: {
+			urlUpload: 'https://dev.api.mybase.pro/files/upload-redactor-image?accessToken=WxpDh8hHHiLvyxC5OTnAI-MuSVkKRz13&companyId=5caade9c760a11170d3617c3'
+		}
+	} )
 		.then( editor => {
 			window.editor = editor;
 		} )

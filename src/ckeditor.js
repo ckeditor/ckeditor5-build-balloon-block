@@ -29,8 +29,8 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import Delimiter from './plugins/delimiter/delimiter';
-
 import '../theme/theme.css';
+import { FileUploadAdapter } from './plugins/file-upload-adapter/file-upload-adapter';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -63,6 +63,7 @@ BalloonEditor.builtinPlugins = [
 
 // Editor configuration.
 BalloonEditor.defaultConfig = {
+	extraPlugins: [	FileUploadAdapterPlugin ],
 	blockToolbar: [
 		'heading',
 		'|',
@@ -101,3 +102,12 @@ BalloonEditor.defaultConfig = {
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
 };
+
+function FileUploadAdapterPlugin( editor ) {
+	/* eslint-disable */
+	editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
+		// Configure the URL to the upload script in your back-end here!
+		return new FileUploadAdapter( loader, editor.config[ '_config' ].fileUploadOptions );
+	};
+	/* eslint-enable */
+}
