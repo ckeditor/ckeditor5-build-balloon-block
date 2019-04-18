@@ -15,16 +15,10 @@
 <h1>CKEditor 5 – balloon block editor build – development sample</h1>
 
 <div id="editor">
-	<h2>Sample</h2>
-
-	<p>This is an instance of the <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#balloon-editor">balloon block editor build</a>.</p>
-
-	<figure class="image">
-		<img src="../tests/manual/sample.jpg" alt="Autumn fields" />
-	</figure>
-
-	<p>You can use this sample to validate whether your <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/custom-builds.html">custom build</a> works fine.</p>
 </div>
+
+<section class="ck-delimiter ck-widget"></section>
+
 
 <script src="../build/ckeditor.js"></script>
 <script>
@@ -35,6 +29,18 @@
 	} )
 		.then( editor => {
 			window.editor = editor;
+
+			editor.setData(`	<h2>Sample</h2>
+
+	<p>This is an instance of the <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#balloon-editor">balloon block editor build</a>.</p>
+	<section class="ck-delimiter ck-widget"></section>
+	<figure class="image">
+		<img src="../tests/manual/sample.jpg" alt="Autumn fields" />
+	</figure>
+
+	<p>You can use this sample to validate whether your <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/custom-builds.html">custom build</a> works fine.</p>`);
+			// editor.model.change(writer => writer.rename(delimiter, 'delimiter'));
+
 		} )
 		.catch( err => {
 			console.error( err.stack );
