@@ -14,8 +14,10 @@ export default class InsertDelimiterCommand extends Command {
 		const schema = model.schema;
 
 		const validParent = getInsertDelimiterParent( selection.getFirstPosition() );
+		const invalidParents = [ 'blockQuote' ];
 
-		this.isEnabled = schema.checkChild( validParent, 'delimiter' );
+		this.isEnabled = invalidParents.indexOf( validParent.name ) < 0 &&
+			schema.checkChild( validParent, 'delimiter' );
 	}
 
 	createDelimiter( writer ) {

@@ -19,10 +19,9 @@ export default class DelimiterEditing extends Plugin {
 		const schema = this.editor.model.schema;
 
 		schema.register( 'delimiter', {
+			allowIn: '$root',
+			allowWhere: '$root',
 			isObject: true,
-			allowIn: [ '$root', 'div' ],
-			isLimit: true,
-			isBlock: true
 		} );
 	}
 
