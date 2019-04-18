@@ -20,8 +20,9 @@ export default class DelimiterEditing extends Plugin {
 
 		schema.register( 'delimiter', {
 			isObject: true,
-			allowWhere: '$block',
+			allowIn: [ '$root', 'div' ],
 			isLimit: true,
+			isBlock: true
 		} );
 	}
 
@@ -42,6 +43,7 @@ export default class DelimiterEditing extends Plugin {
 				classes: 'ck-delimiter'
 			}
 		} );
+
 		conversion.for( 'editingDowncast' ).elementToElement( {
 			model: 'delimiter',
 			view: ( modelElement, viewWriter ) => {
