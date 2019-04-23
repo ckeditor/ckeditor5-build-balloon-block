@@ -13,6 +13,21 @@ const { bundler, styles } = require( '@ckeditor/ckeditor5-dev-utils' );
 const CKEditorWebpackPlugin = require( '@ckeditor/ckeditor5-dev-webpack-plugin' );
 const UglifyJsWebpackPlugin = require( 'uglifyjs-webpack-plugin' );
 
+const icons = [
+	new webpack.NormalModuleReplacementPlugin( /bold\.svg/, __dirname + '/src/assets/icons/bold.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /italic\.svg/, __dirname + '/src/assets/icons/italic.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /underline\.svg/, __dirname + '/src/assets/icons/underline.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /strikethrough\.svg/, __dirname + '/src/assets/icons/strikethrough.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /quote\.svg/, __dirname + '/src/assets/icons/quote.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /numberedlist\.svg/, __dirname + '/src/assets/icons/numberedlist.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /bulletedlist\.svg/, __dirname + '/src/assets/icons/bulletedlist.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /link\.svg/, __dirname + '/src/assets/icons/link.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /align-center\.svg/, __dirname + '/src/assets/icons/align-center.svg' ),
+	// new webpack.NormalModuleReplacementPlugin( /align-justify\.svg/, __dirname + '/src/assets/icons/align-justify.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /align-left\.svg/, __dirname + '/src/assets/icons/align-left.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /align-right\.svg/, __dirname + '/src/assets/icons/align-right.svg' ),
+];
+
 module.exports = {
 	devtool: 'source-map',
 	performance: { hints: false },
@@ -44,6 +59,7 @@ module.exports = {
 	},
 
 	plugins: [
+		...icons,
 		new CKEditorWebpackPlugin( {
 			// UI language. Language codes follow the https://en.wikipedia.org/wiki/ISO_639-1 format.
 			// When changing the built-in language, remember to also change it in the editor's configuration (src/ckeditor.js).

@@ -37,6 +37,7 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 import '../theme/theme.css';
+import CustomHighlight from './plugins/highlight/highlight';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -49,6 +50,7 @@ BalloonEditor.builtinPlugins = [
 	FontSize,
 	FontFamily,
 	Highlight,
+	CustomHighlight,
 	BlockToolbar,
 	Bold,
 	Delimiter,
@@ -77,30 +79,12 @@ BalloonEditor.builtinPlugins = [
 BalloonEditor.defaultConfig = {
 	extraPlugins: [	FileUploadAdapterPlugin ],
 	blockToolbar: [
-		'heading',
-		'|',
-		'bold',
-		'italic',
-		'underline',
-		'strikethrough',
-		'highlight',
-		'|',
-		'delimiter',
-		'|',
-		'bulletedList',
-		'numberedList',
-		'imageUpload',
-		'blockQuote',
-		'insertTable',
-		'mediaEmbed'
+		'delimiter', 'bulletedList', 'imageUpload', 'blockQuote', 'insertTable', 'alignment'
 	],
 	toolbar: {
 		items: [
-			'bold',
-			'italic',
-			'link',
-			'undo',
-			'redo'
+			'bold', 'italic', 'underline', 'strikethrough', '|', 'numberedList', 'bulletedList', 'link',
+			'heading', 'highlight' /* 'customHighlight' */, 'blockQuote'
 		]
 	},
 	image: {

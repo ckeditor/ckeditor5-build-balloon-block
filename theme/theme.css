@@ -1,12 +1,86 @@
-/*
- * Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
+/*@import "../src/plugins/highlight/theme/highlight.css";*/
 
-/* Give the block toolbar button some space, moving it a few pixels away from the editable area. */
+:root {
+	--ck-border-radius: 8px !important;
+	--ck-icon-size: 24px !important;
+	--ck-custom-background: #556066 !important;
+	--ck-custom-foreground: #556066 !important;
+	--ck-custom-border: #556066 !important;
+	--ck-color-base-border: #556066 !important;
+	--ck-color-base-foreground: var(--ck-custom-background) !important;
+	--ck-color-button-default-background: var(--ck-custom-background) !important;
+	--ck-color-base-background: var(--ck-custom-background) !important;
+	--ck-color-button-default-hover-background: rgba(255, 255, 255, 1) !important;
+	--ck-color-button-on-background: var(--ck-custom-foreground) !important;
+	--ck-color-button-on-hover-background: rgba(255, 255, 255, 1) !important;
+}
+
+.ck.ck-toolbar {
+	max-width: 700px;
+}
+
 .ck.ck-block-toolbar-button {
 	transform: translateX(calc(-1 * var(--ck-spacing-large)));
 }
+
+.ck.ck-button.ck-off {
+	color: rgba(255, 255, 255, 1) !important;
+}
+
+.ck.ck-button.ck-on {
+	color: #1ebfe9;
+}
+
+.ck.ck-button.ck-on:hover,
+.ck.ck-button.ck-off:hover {
+	color: var(--ck-custom-background) !important;
+}
+
+@define-mixin button-highlite-color $color {
+	/*.ck.ck-button.marker-$color,*/
+	/*.ck.ck-button.pen-$color,*/
+	.ck.ck-button.marker-$color svg,
+	.ck.ck-button.pen-$color svg {
+		width: 40px;
+		height: 40px;
+	}
+
+	.ck.ck-button.marker-$color, .ck.ck-button.marker-$color:hover {
+		color: var(--ck-highlight-marker-$color) !important;
+	}
+
+	.ck.ck-button.pen-$color, .ck.ck-button.pen-$color:hover {
+		color: var(--ck-highlight-pen-$color) !important;
+	}
+
+	.ck.ck-button.marker-$color.ck-on:before,
+	.ck.ck-button.pen-$color.ck-on:before {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		z-index: 3;
+	}
+
+	.ck.ck-button.pen-$color.ck-on:before {
+		content: url('../src/assets/icons/done.svg');
+	}
+
+	.ck.ck-button.marker-$color.ck-on:before {
+		content: url('../src/assets/icons/done-black.svg');
+	}
+}
+
+@mixin button-highlite-color yellow;
+@mixin button-highlite-color green;
+@mixin button-highlite-color orange;
+@mixin button-highlite-color blue;
+@mixin button-highlite-color gray;
+@mixin button-highlite-color red;
+@mixin button-highlite-color light-blue;
+@mixin button-highlite-color black;
+@mixin button-highlite-color dark-gray;
+@mixin button-highlite-color medium-gray;
+@mixin button-highlite-color light-gray;
 
 .ck-delimiter.ck-placeholder::before,
 .ck-delimiter::before {
@@ -19,8 +93,6 @@
 	width: 100%;
 	text-align: center;
 }
-
-
 
 .ck-delimiter.ck-widget,
 .ck-delimiter.ck-widget:hover,
