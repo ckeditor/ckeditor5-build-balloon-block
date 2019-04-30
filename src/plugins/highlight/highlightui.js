@@ -6,8 +6,7 @@ import colorIcon from '../../assets/icons/square.svg';
 import eraserIcon from '../../assets/icons/eraser.svg';
 import brushIcon from '../../assets/icons/brush.svg';
 
-import ToolbarSeparatorView from '@ckeditor/ckeditor5-ui/src/toolbar/toolbarseparatorview';
-import SplitButtonView from '@ckeditor/ckeditor5-ui/src/dropdown/button/splitbuttonview';
+import TextView from '../textview';
 import { createDropdown, addToolbarToDropdown } from '@ckeditor/ckeditor5-ui/src/dropdown/utils';
 
 import './theme/highlight.css';
@@ -25,12 +24,13 @@ export default class CustomHighlightUI extends Plugin {
 		}
 
 		this._addRemoveHighlightButton();
-
 		this._addDropdown( options );
 	}
 
 	_addRemoveHighlightButton() {
-		this._addButton( 'removeCustomHighlight', 'Убрать выделение', eraserIcon );
+		this._addButton( 'removeCustomHighlight', 'Убрать выделение', eraserIcon, null, button => {
+			button.class = 'ck-button_eraser';
+		} );
 	}
 
 	_addHighlighterButton( option ) {
@@ -70,86 +70,58 @@ export default class CustomHighlightUI extends Plugin {
 
 	_addDropdown( options ) {
 		const editor = this.editor;
-		const t = editor.t;
 		const componentFactory = editor.ui.componentFactory;
 
 		const startingHighlighter = [ ...options.markers, ...options.pens ][ 0 ];
 
-		const optionsMap = [ ...options.markers, ...options.pens ].reduce( ( retVal, option ) => {
-			retVal[ option.model ] = option;
-
-			return retVal;
-		}, {} );
-
 		componentFactory.add( 'customHighlight', locale => {
 			const command = editor.commands.get( 'highlight' );
-			const dropdownView = createDropdown( locale, SplitButtonView );
-			const splitButtonView = dropdownView.buttonView;
+			const dropdownView = createDropdown( locale );
 
-			splitButtonView.set( {
-				tooltip: t( 'Highlight' ),
-				// Holds last executed highlighter.
-				lastExecuted: startingHighlighter.model,
-				// Holds current highlighter to execute (might be different then last used).
-				commandValue: startingHighlighter.model
+			dropdownView.set( {
+				class: [ 'ck-custom-highlight' ]
 			} );
 
-			// Dropdown button changes to selection (command.value):
-			// - If selection is in highlight it get active highlight appearance (icon, color) and is activated.
-			// - Otherwise it gets appearance (icon, color) of last executed highlight.
-			splitButtonView.bind( 'icon' ).to( command, 'value', () => brushIcon );
-			splitButtonView.bind( 'color' ).to( command, 'value', value => getActiveOption( value, 'color' ) );
-			splitButtonView.bind( 'commandValue' ).to( command, 'value', value => getActiveOption( value, 'model' ) );
-			// splitButtonView.bind( 'isOn' ).to( command, 'value', value => !!value );
+			const dropdownButtonView = dropdownView.buttonView;
+			dropdownView.bind( 'isEnabled' ).to( command );
 
-			splitButtonView.delegate( 'execute' ).to( dropdownView );
+			dropdownButtonView.set( {
+				tooltip: 'Цвет текста',
+				lastExecuted: startingHighlighter.model,
+				commandValue: startingHighlighter.model,
+				icon: brushIcon,
+			} );
 
-			// Create buttons array.
-			const buttons = [ ...options.markers, ...options.pens ].map( option => {
-				// Get existing highlighter button.
+			const penButtons = options.pens.map( option => {
 				const buttonView = componentFactory.create( 'customHighlight:' + option.model );
-
-				// Update lastExecutedHighlight on execute.
-				this.listenTo( buttonView, 'execute', () => dropdownView.buttonView.set( { lastExecuted: option.model } ) );
-
+				this.listenTo( buttonView, 'execute', () => {
+					editor.execute( 'highlight', { value: option.model } );
+				} );
 				return buttonView;
 			} );
 
-			// Make toolbar button enabled when any button in dropdown is enabled before adding separator and eraser.
-			dropdownView.bind( 'isEnabled' ).toMany( buttons, 'isEnabled', ( ...areEnabled ) => areEnabled.some( isEnabled => isEnabled ) );
-
-			// Add separator and eraser buttons to dropdown.
-			buttons.push( new ToolbarSeparatorView() );
-			buttons.push( componentFactory.create( 'removeCustomHighlight' ) );
-
-			addToolbarToDropdown( dropdownView, buttons );
-			bindToolbarIconStyleToActiveColor( dropdownView );
-
-			// Execute current action from dropdown's split button action button.
-			splitButtonView.on( 'execute', () => {
-				editor.execute( 'highlight', { value: splitButtonView.commandValue } );
-				editor.editing.view.focus();
+			const highlightButtons = options.markers.map( option => {
+				const buttonView = componentFactory.create( 'customHighlight:' + option.model );
+				this.listenTo( buttonView, 'execute', () => {
+					editor.execute( 'highlight', { value: option.model } );
+				} );
+				return buttonView;
 			} );
 
-			// Returns active highlighter option depending on current command value.
-			// If current is not set or it is the same as last execute this method will return the option key (like icon or color)
-			// of last executed highlighter. Otherwise it will return option key for current one.
-			function getActiveOption( current, key ) {
-				const whichHighlighter = !current ||
-				current === splitButtonView.lastExecuted ? splitButtonView.lastExecuted : current;
+			const headerPen = new TextView( 'Выбор цвета текста' );
+			const headerHighlight = new TextView( 'Выбор цвета выделения текста' );
 
-				return optionsMap[ whichHighlighter ][ key ];
-			}
+			penButtons.push( componentFactory.create( 'removeCustomHighlight' ) );
+			highlightButtons.push( componentFactory.create( 'removeCustomHighlight' ) );
+
+			dropdownView.render();
+
+			dropdownView.panelView.children.add( headerPen );
+			addToolbarToDropdown( dropdownView, penButtons );
+			dropdownView.panelView.children.add( headerHighlight );
+			addToolbarToDropdown( dropdownView, highlightButtons );
 
 			return dropdownView;
 		} );
 	}
 }
-
-// Extends split button icon style to reflect last used button style.
-function bindToolbarIconStyleToActiveColor( dropdownView ) {
-	const actionView = dropdownView.buttonView.actionView;
-
-	actionView.iconView.bind( 'fillColor' ).to( dropdownView.buttonView, 'color' );
-}
-

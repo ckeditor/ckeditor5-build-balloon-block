@@ -84,7 +84,7 @@ BalloonEditor.defaultConfig = {
 	toolbar: {
 		items: [
 			'bold', 'italic', 'underline', 'strikethrough', '|', 'numberedList', 'bulletedList', 'link',
-			'heading', 'highlight' /* 'customHighlight' */, 'blockQuote'
+			'heading', 'customHighlight', 'blockQuote'
 		]
 	},
 	image: {
@@ -93,6 +93,14 @@ BalloonEditor.defaultConfig = {
 			'imageStyle:side',
 			'|',
 			'imageTextAlternative'
+		]
+	},
+	heading: {
+		options: [
+			{ model: 'paragraph', title: 'Параграф', class: 'ck-heading_paragraph' },
+			{ model: 'heading1', view: 'h1', title: 'Заголовок H1', class: 'ck-heading_heading1' },
+			{ model: 'heading2', view: 'h2', title: 'Заголовок H2', class: 'ck-heading_heading2' },
+			// { model: 'code', view: 'code', title: 'Код', class: 'ck-heading_code' }
 		]
 	},
 	table: {

@@ -19,13 +19,13 @@
 
 @define-mixin highlight-marker-color $color {
 	.marker-$color {
-		background-color: var(--ck-highlight-marker-$color);
+		background-color: var(--ck-highlight-marker-$color) !important;
 	}
 }
 
 @define-mixin highlight-pen-color $color {
 	.pen-$color {
-		color: var(--ck-highlight-pen-$color);
+		color: var(--ck-highlight-pen-$color) !important;
 
 		/* Override default yellow background of `<mark>` from user agent stylesheet */
 		background-color: transparent;

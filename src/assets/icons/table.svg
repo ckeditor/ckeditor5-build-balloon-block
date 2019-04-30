@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <path id="table-a" d="M12,17 L19,17 L19,12 L12,12 L12,17 Z M11,17 L11,12 L4,12 L4,17 L11,17 Z M12,6 L12,11 L19,11 L19,6 L12,6 Z M11,6 L4,6 L4,11 L11,11 L11,6 Z M19,18 L3,18 L3,17 L3,6 L3,5 L19,5 L20,5 L20,18 L19,18 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="#9AA5AB" xlink:href="#table-a"/>
+  </g>
+</svg>

@@ -26,6 +26,13 @@ const icons = [
 	// new webpack.NormalModuleReplacementPlugin( /align-justify\.svg/, __dirname + '/src/assets/icons/align-justify.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /align-left\.svg/, __dirname + '/src/assets/icons/align-left.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /align-right\.svg/, __dirname + '/src/assets/icons/align-right.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /linkui\.js/, __dirname + '/src/plugins/link/linkui.js' ),
+	new webpack.NormalModuleReplacementPlugin( /headingui\.js/, __dirname + '/src/plugins/heading/headingui.js' ),
+	new webpack.NormalModuleReplacementPlugin( /table\.svg/, __dirname + '/src/assets/icons/table.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /table-column\.svg/, __dirname + '/src/assets/icons/table-column.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /table-row\.svg/, __dirname + '/src/assets/icons/table-row.svg' ),
+	// new webpack.NormalModuleReplacementPlugin( /table-merge-cell\.svg/, __dirname + '/src/assets/icons/link.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /pilcrow\.svg/, __dirname + '/src/assets/icons/plus-add.svg' ),
 ];
 
 module.exports = {

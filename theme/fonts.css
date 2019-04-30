@@ -1,0 +1,52 @@
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('../src/assets/fonts/ProximaNova-Bold.otf') format("opentype");
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('../src/assets/fonts/ProximaNova-BoldIt.otf') format("opentype");
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('../src/assets/fonts/ProximaNova-Light.otf') format("opentype");
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('../src/assets/fonts/ProximaNova-LightIt.otf') format("opentype");
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('../src/assets/fonts/ProximaNova-Semibold.otf') format("opentype");
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('../src/assets/fonts/ProximaNova-Reg.otf') format("opentype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('../src/assets/fonts/ProximaNova-RegIt.otf') format("opentype");
+	font-weight: normal;
+	font-style: italic;
+}
+
+* {
+	font-family: ProximaNova;
+}
