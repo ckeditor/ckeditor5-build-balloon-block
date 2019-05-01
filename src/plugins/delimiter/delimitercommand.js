@@ -21,7 +21,7 @@ export default class InsertDelimiterCommand extends Command {
 	}
 
 	createDelimiter( writer ) {
-		this.checkDelimiterInit();
+		this.checkDelimiterInit( writer );
 
 		if ( this.delimiter ) {
 			writer.remove( this.delimiter );
