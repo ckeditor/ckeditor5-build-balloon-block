@@ -105,7 +105,7 @@
 }
 
 .ck-heading-dropdown .ck-dropdown__panel .ck-button.ck-on:after {
-	content: url('../src/assets/icons/done-green.svg');
+	content: url('../src/assets/icons/done-green.svg') !important;
 	margin-left: 10px;
 }
 

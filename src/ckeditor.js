@@ -102,7 +102,7 @@ BalloonEditor.defaultConfig = {
 	table: {
 		contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
 	},
-	options: [ 'left', 'right', 'center' ],
+	alignment: { options: [ 'left', 'right', 'center' ] },
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'ru'
 };
