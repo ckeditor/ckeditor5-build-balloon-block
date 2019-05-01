@@ -1,31 +1,141 @@
-/*
- * Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
+@import "fonts.css";
+@import "buttons.css";
+@import "delimiter.css";
+@import "highlight.css";
 
-/* Give the block toolbar button some space, moving it a few pixels away from the editable area. */
+:root {
+	--ck-border-radius: 8px !important;
+	--ck-icon-size: 24px !important;
+	--ck-custom-background: #556066 !important;
+	--ck-custom-foreground: #556066 !important;
+	--ck-custom-border: #556066 !important;
+	--ck-color-base-border: #556066 !important;
+	--ck-color-base-foreground: var(--ck-custom-background) !important;
+	--ck-color-button-default-background: var(--ck-custom-background) !important;
+	--ck-color-base-background: var(--ck-custom-background) !important;
+	--ck-color-button-default-hover-background: rgba(255, 255, 255, 1) !important;
+	--ck-color-button-on-background: var(--ck-custom-foreground) !important;
+	--ck-color-button-on-hover-background: rgba(255, 255, 255, 1) !important;
+	--ck-color-focus-border: transparent !important;
+	--ck-color-dropdown-panel-background: rgba(255, 255, 255, 1) !important;
+	--ck-color-dropdown-panel-border: transparent !important;
+	--ck-focus-outer-shadow: transparent !important;
+	--ck-focus-disabled-outer-shadow: transparent !important;
+	--ck-focus-error-outer-shadow: transparent !important;
+}
+
+.ck.ck-toolbar {
+	max-width: 700px;
+}
+
+.ck.ck-dropdown__header {
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.25;
+	color: #9aa5ab;
+	margin-bottom: 12px;
+}
+
+.ck.ck-link-form {
+	padding: 22px 16px !important;
+	/*background-color: rgba(255, 255, 255, 1) !important;*/
+	border: 0px solid !important;
+	border-radius: 4px !important;
+	outline: none;
+	--ck-color-panel-border: transparent !important;
+}
+
+.ck.ck-link-form .ck-dropdown__header {
+	color: rgba(255, 255, 255, 1);
+}
+
+.ck.ck-link-form .ck-input-text,
+.ck.ck-link-form .ck-label {
+	font-weight: normal;
+	line-height: 1.21;
+	letter-spacing: normal;
+	color: rgba(255, 255, 255, 1);
+}
+
+.ck.ck-link-form .ck-label {
+	font-size: 12px;
+	letter-spacing: 0.5px;
+	margin-bottom: 6px;
+	line-height: 1.42;
+	text-transform: uppercase;
+}
+
+.ck.ck-link-form .ck-input-text {
+	font-size: 14px;
+}
+
+.ck.ck-link-form .ck-input {
+	height: 40px;
+	border: 1px solid #9aa5ab;
+	padding: auto 16px;
+	margin-bottom: 20px;
+}
+
+.ck-link-form .ck-button {
+	float: right;
+	margin-bottom: 20px;
+	font-size: 16px;
+	font-weight: 600;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.25;
+	height: 40px;
+	padding: 0 24px;
+	background-color: #1f8ceb;
+}
+
+.ck-dropdown__panel {
+	background-color: rgba(255, 255, 255, 1) !important;
+	border: 0px solid;
+	border-radius: 4px !important;
+}
+
+.ck-heading-dropdown .ck-dropdown__panel .ck-button,
+.ck-heading-dropdown .ck-dropdown__panel .ck-button.ck-on,
+.ck-heading-dropdown .ck-dropdown__panel .ck-button:hover {
+	background-color: #ffffff !important;
+	color: #333333 !important;
+	height: 44px !important;
+	border-bottom: 1px solid #e4e5e9 !important;
+}
+
+.ck-heading-dropdown .ck-dropdown__panel .ck-button.ck-on:after {
+	content: url('../src/assets/icons/done-green.svg');
+	margin-left: 10px;
+}
+
+.ck-heading-dropdown .ck-dropdown__panel:last-child {
+	border-bottom: none !important;
+}
+
+.ck-link-actions {
+	padding: 4px 12px !important;
+}
+
 .ck.ck-block-toolbar-button {
+	border-radius: 50% !important;
+	color: #1f8ceb !important;
+	width: 40px;
+	height: 40px;
+	box-shadow: -4px 5px 18px 0 rgba(29, 42, 68, .13) !important;
+	background-color: hsla(0, 0%, 100%, 0) !important;
+	transform-origin: 0 0;
 	transform: translateX(calc(-1 * var(--ck-spacing-large)));
 }
 
-.ck-delimiter.ck-placeholder::before,
-.ck-delimiter::before {
-	display: inline-block;
-	content: "***" !important;
-	font-size: 30px;
-	line-height: 65px;
-	height: 30px;
-	letter-spacing: 0.2em;
-	width: 100%;
-	text-align: center;
+/*.ck.ck-block-toolbar-button.ck-on {*/
+	/*transform: rotate(45deg);*/
+	/*transform: translateX(calc(-1.5*var(--ck-spacing-large)));*/
+/*}*/
+
+.ck-toolbar__separator {
+	margin: 8px 1px !important;
+	height: 24px !important;
+	background-color: rgba(255, 255, 255, 1) !important;
 }
 
-
-
-.ck-delimiter.ck-widget,
-.ck-delimiter.ck-widget:hover,
-.ck-delimiter.ck-widget_selected,
-.ck-delimiter.ck-widget_selected:hover {
-	outline: none !important;
-	transition: none !important;
-}

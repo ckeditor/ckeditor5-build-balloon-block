@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <path id="code-a" d="M14.0576923,15.82 L17.7884615,12 L14.0576923,8.18 L15.1923077,7 L20,12 L15.1923077,17 L14.0576923,15.82 Z M9.94230769,15.82 L8.80769231,17 L4,12 L8.80769231,7 L9.94230769,8.18 L6.21153846,12 L9.94230769,15.82 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="#556066" xlink:href="#code-a"/>
+  </g>
+</svg>

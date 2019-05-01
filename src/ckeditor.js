@@ -37,6 +37,7 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 import '../theme/theme.css';
+import CustomHighlight from './plugins/highlight/highlight';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -49,6 +50,7 @@ BalloonEditor.builtinPlugins = [
 	FontSize,
 	FontFamily,
 	Highlight,
+	CustomHighlight,
 	BlockToolbar,
 	Bold,
 	Delimiter,
@@ -77,47 +79,30 @@ BalloonEditor.builtinPlugins = [
 BalloonEditor.defaultConfig = {
 	extraPlugins: [	FileUploadAdapterPlugin ],
 	blockToolbar: [
-		'heading',
-		'|',
-		'bold',
-		'italic',
-		'underline',
-		'strikethrough',
-		'highlight',
-		'|',
-		'delimiter',
-		'|',
-		'bulletedList',
-		'numberedList',
-		'imageUpload',
-		'blockQuote',
-		'insertTable',
-		'mediaEmbed'
+		'delimiter', 'bulletedList', 'imageUpload', 'blockQuote', 'insertTable', 'alignment'
 	],
 	toolbar: {
 		items: [
-			'bold',
-			'italic',
-			'link',
-			'undo',
-			'redo'
+			'bold', 'italic', 'underline', 'strikethrough', '|', 'numberedList', 'bulletedList', 'link',
+			'heading', 'customHighlight', 'blockQuote'
 		]
 	},
 	image: {
-		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
-			'|',
-			'imageTextAlternative'
+		toolbar: [ 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight' ],
+		styles: [ 'full', 'alignLeft', 'alignRight' ]
+	},
+	heading: {
+		options: [
+			{ model: 'paragraph', title: 'Параграф', class: 'ck-heading_paragraph' },
+			{ model: 'heading1', view: 'h1', title: 'Заголовок H1', class: 'ck-heading_heading1' },
+			{ model: 'heading2', view: 'h2', title: 'Заголовок H2', class: 'ck-heading_heading2' },
+			// { model: 'code', view: 'code', title: 'Код', class: 'ck-heading_code' }
 		]
 	},
 	table: {
-		contentToolbar: [
-			'tableColumn',
-			'tableRow',
-			'mergeTableCells'
-		]
+		contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
 	},
+	options: [ 'left', 'right', 'center' ],
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'ru'
 };
