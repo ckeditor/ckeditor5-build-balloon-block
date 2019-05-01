@@ -33,6 +33,8 @@ const icons = [
 	new webpack.NormalModuleReplacementPlugin( /table-row\.svg/, __dirname + '/src/assets/icons/table-row.svg' ),
 	// new webpack.NormalModuleReplacementPlugin( /table-merge-cell\.svg/, __dirname + '/src/assets/icons/link.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /pilcrow\.svg/, __dirname + '/src/assets/icons/plus-add.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /image\.svg/, __dirname + '/src/assets/icons/picture.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /dropdown-arrow\.svg/, __dirname + '/src/assets/icons/dropdown-arrow.svg' ),
 ];
 
 module.exports = {

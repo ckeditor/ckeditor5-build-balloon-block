@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <path id="divider-a" d="M3,12 L11,12 L11,13 L3,13 L3,12 Z M13,12 L21,12 L21,13 L13,13 L13,12 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="#9AA5AB" xlink:href="#divider-a"/>
+  </g>
+</svg>

@@ -64,17 +64,17 @@ export default class CustomHighlightEditing extends Plugin {
 
 	init() {
 		const editor = this.editor;
-		editor.model.schema.extend( '$text', { allowAttributes: 'highlight' } );
+		editor.model.schema.extend( '$text', { allowAttributes: 'customHighlight' } );
 		const options = editor.config.get( 'customHighlight.options' );
 		editor.conversion.attributeToElement( _buildDefinition( options ) );
-		editor.commands.add( 'highlight', new HighlightCommand( editor ) );
+		editor.commands.add( 'customHighlight', new HighlightCommand( editor ) );
 	}
 }
 
 function _buildDefinition( options ) {
 	const definition = {
 		model: {
-			key: 'highlight',
+			key: 'customHighlight',
 			values: []
 		},
 		view: {}

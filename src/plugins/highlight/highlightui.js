@@ -9,8 +9,6 @@ import brushIcon from '../../assets/icons/brush.svg';
 import TextView from '../textview';
 import { createDropdown, addToolbarToDropdown } from '@ckeditor/ckeditor5-ui/src/dropdown/utils';
 
-import './theme/highlight.css';
-
 export default class CustomHighlightUI extends Plugin {
 	static get pluginName() {
 		return 'CustomHighlightUI';
@@ -34,7 +32,7 @@ export default class CustomHighlightUI extends Plugin {
 	}
 
 	_addHighlighterButton( option ) {
-		const command = this.editor.commands.get( 'highlight' );
+		const command = this.editor.commands.get( 'customHighlight' );
 
 		this._addButton( 'customHighlight:' + option.model, option.title, colorIcon, option.model, decorateHighlightButton );
 
@@ -58,7 +56,7 @@ export default class CustomHighlightUI extends Plugin {
 			} );
 
 			buttonView.on( 'execute', () => {
-				editor.execute( 'highlight', { value } );
+				editor.execute( 'customHighlight', { value } );
 				editor.editing.view.focus();
 			} );
 
@@ -75,7 +73,7 @@ export default class CustomHighlightUI extends Plugin {
 		const startingHighlighter = [ ...options.markers, ...options.pens ][ 0 ];
 
 		componentFactory.add( 'customHighlight', locale => {
-			const command = editor.commands.get( 'highlight' );
+			const command = editor.commands.get( 'customHighlight' );
 			const dropdownView = createDropdown( locale );
 
 			dropdownView.set( {
@@ -95,15 +93,15 @@ export default class CustomHighlightUI extends Plugin {
 			const penButtons = options.pens.map( option => {
 				const buttonView = componentFactory.create( 'customHighlight:' + option.model );
 				this.listenTo( buttonView, 'execute', () => {
-					editor.execute( 'highlight', { value: option.model } );
+					editor.execute( 'customHighlight', { value: option.model } );
 				} );
 				return buttonView;
 			} );
 
-			const highlightButtons = options.markers.map( option => {
+			const customHighlightButtons = options.markers.map( option => {
 				const buttonView = componentFactory.create( 'customHighlight:' + option.model );
 				this.listenTo( buttonView, 'execute', () => {
-					editor.execute( 'highlight', { value: option.model } );
+					editor.execute( 'customHighlight', { value: option.model } );
 				} );
 				return buttonView;
 			} );
@@ -112,14 +110,14 @@ export default class CustomHighlightUI extends Plugin {
 			const headerHighlight = new TextView( 'Выбор цвета выделения текста' );
 
 			penButtons.push( componentFactory.create( 'removeCustomHighlight' ) );
-			highlightButtons.push( componentFactory.create( 'removeCustomHighlight' ) );
+			customHighlightButtons.push( componentFactory.create( 'removeCustomHighlight' ) );
 
 			dropdownView.render();
 
 			dropdownView.panelView.children.add( headerPen );
 			addToolbarToDropdown( dropdownView, penButtons );
 			dropdownView.panelView.children.add( headerHighlight );
-			addToolbarToDropdown( dropdownView, highlightButtons );
+			addToolbarToDropdown( dropdownView, customHighlightButtons );
 
 			return dropdownView;
 		} );

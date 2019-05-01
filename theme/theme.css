@@ -1,4 +1,7 @@
 @import "fonts.css";
+@import "buttons.css";
+@import "delimiter.css";
+@import "highlight.css";
 
 :root {
 	--ck-border-radius: 8px !important;
@@ -23,32 +26,6 @@
 
 .ck.ck-toolbar {
 	max-width: 700px;
-}
-
-.ck-toolbar .ck-button {
-	outline: none !important;
-}
-
-.ck.ck-button.ck-off {
-	color: rgba(255, 255, 255, 1) !important;
-}
-.ck-alignment-dropdown .ck-toolbar {
-	background-color: #ffffff !important;
-}
-
-.ck-alignment-dropdown .ck-dropdown__panel .ck-button {
-	background-color: #ffffff !important;
-	color: #333333 !important;
-	height: 44px !important;
-}
-
-.ck.ck-button.ck-on {
-	color: #1ebfe9 !important;
-}
-
-.ck.ck-button.ck-on:hover,
-.ck.ck-button.ck-off:hover {
-	color: var(--ck-custom-background) !important;
 }
 
 .ck.ck-dropdown__header {
@@ -118,10 +95,6 @@
 	border-radius: 4px !important;
 }
 
-.ck-custom-highlight .ck-dropdown__panel {
-	padding: 18px 12px 0px 16px;
-}
-
 .ck-heading-dropdown .ck-dropdown__panel .ck-button,
 .ck-heading-dropdown .ck-dropdown__panel .ck-button.ck-on,
 .ck-heading-dropdown .ck-dropdown__panel .ck-button:hover {
@@ -140,107 +113,8 @@
 	border-bottom: none !important;
 }
 
-.ck-custom-highlight .ck-dropdown__panel .ck-toolbar {
-	width: 280px;
-}
-
-.ck-custom-highlight .ck-dropdown__panel .ck-toolbar {
-	background-color: inherit !important;
-	display: flex;
-	flex-wrap: wrap;
-	padding: 0;
-	margin-bottom: 20px;
-}
-
-.ck-custom-highlight .ck-dropdown__panel .ck-toolbar .ck-button {
-	border: none;
-	padding: 0;
-	width: 40px !important;
-	height: 40px !important;
-	background-color: transparent;
-}
-
-.ck-dropdown__panel .ck-toolbar .ck-button_eraser,
-.ck-custom-highlight .ck-dropdown__panel .ck-toolbar .ck-button_eraser {
-	width: 38px !important;
-	height: 38px !important;
-	border: 1px double #e4e5e9;
-	border-radius: 4px;
-}
-
-.ck-dropdown__panel .ck-toolbar .ck-button_eraser .ck-icon,
-.ck-custom-highlight .ck-dropdown__panel .ck-toolbar .ck-button_eraser .ck-icon {
-	color: var(--ck-custom-background) !important;
-}
-
 .ck-link-actions {
 	padding: 4px 12px !important;
-}
-
-@define-mixin button-highlite-color $color {
-	/*.ck.ck-button.marker-$color,*/
-	/*.ck.ck-button.pen-$color,*/
-	.ck.ck-button.marker-$color svg,
-	.ck.ck-button.pen-$color svg {
-		width: 40px !important;
-		height: 40px !important;
-	}
-
-	.ck.ck-button.marker-$color, .ck.ck-button.marker-$color:hover {
-		color: var(--ck-highlight-marker-$color) !important;
-	}
-
-	.ck.ck-button.pen-$color, .ck.ck-button.pen-$color:hover {
-		color: var(--ck-highlight-pen-$color) !important;
-	}
-
-	.ck.ck-button.marker-$color.ck-on:before,
-	.ck.ck-button.pen-$color.ck-on:before {
-		position: absolute;
-		top: 8px;
-		left: 8px;
-		z-index: 3;
-	}
-
-	.ck.ck-button.pen-$color.ck-on:before {
-		content: url('../src/assets/icons/done.svg');
-	}
-
-	.ck.ck-button.marker-$color.ck-on:before {
-		content: url('../src/assets/icons/done-black.svg');
-	}
-}
-
-@mixin button-highlite-color yellow;
-@mixin button-highlite-color green;
-@mixin button-highlite-color orange;
-@mixin button-highlite-color blue;
-@mixin button-highlite-color gray;
-@mixin button-highlite-color red;
-@mixin button-highlite-color light-blue;
-@mixin button-highlite-color black;
-@mixin button-highlite-color dark-gray;
-@mixin button-highlite-color medium-gray;
-@mixin button-highlite-color light-gray;
-
-.ck-delimiter.ck-placeholder::before,
-.ck-delimiter::before {
-	display: inline-block;
-	content: "***" !important;
-	font-size: 30px;
-	line-height: 65px;
-	height: 30px;
-	letter-spacing: 0.2em;
-	width: 100%;
-	text-align: center;
-}
-
-.ck-delimiter.ck-widget,
-.ck-delimiter.ck-widget:hover,
-.ck-delimiter.ck-widget_selected,
-.ck-delimiter.ck-widget_selected:hover {
-	outline: none !important;
-	transition: none !important;
 }
 
 .ck.ck-block-toolbar-button {
@@ -258,3 +132,10 @@
 	/*transform: rotate(45deg);*/
 	/*transform: translateX(calc(-1.5*var(--ck-spacing-large)));*/
 /*}*/
+
+.ck-toolbar__separator {
+	margin: 8px 1px !important;
+	height: 24px !important;
+	background-color: rgba(255, 255, 255, 1) !important;
+}
+

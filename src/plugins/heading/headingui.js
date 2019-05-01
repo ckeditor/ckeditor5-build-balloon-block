@@ -14,7 +14,7 @@ import { createDropdown, addListToDropdown } from '@ckeditor/ckeditor5-ui/src/dr
 
 import Collection from '@ckeditor/ckeditor5-utils/src/collection';
 
-import headingIcon from '../../assets/icons/h1.svg';
+import headingIcon from '../../assets/icons/heading.svg';
 
 // import '../theme/heading.css';
 

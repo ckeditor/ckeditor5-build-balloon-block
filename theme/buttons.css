@@ -1,0 +1,43 @@
+.ck-toolbar .ck-button {
+	outline: none !important;
+}
+
+.ck.ck-button.ck-off {
+	color: rgba(255, 255, 255, 1) !important;
+}
+
+.ck-alignment-dropdown .ck-toolbar {
+	background-color: #ffffff !important;
+}
+
+.ck-alignment-dropdown .ck-dropdown__panel .ck-button {
+	background-color: #ffffff !important;
+	color: #333333 !important;
+	height: 44px !important;
+}
+
+.ck.ck-button.ck-on {
+	color: #1ebfe9 !important;
+}
+
+.ck.ck-button.ck-on:hover,
+.ck.ck-button.ck-off:hover {
+	color: var(--ck-custom-background) !important;
+}
+
+.ck.ck-button.ck-disabled:hover {
+	color: rgba(255, 255, 255, 1) !important;
+}
+
+.ck-dropdown__button .ck-button__icon {
+	margin-right: 0 !important;
+}
+
+.ck-button .ck-dropdown__arrow {
+	margin-left: -4px !important;
+	height: 8px !important;
+}
+
+.ck-rounded-corners .ck.ck-dropdown .ck-dropdown__panel .ck-list .ck-list__item .ck-button {
+	border-radius: 0 !important;
+}

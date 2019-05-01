@@ -88,12 +88,8 @@ BalloonEditor.defaultConfig = {
 		]
 	},
 	image: {
-		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
-			'|',
-			'imageTextAlternative'
-		]
+		toolbar: [ 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight' ],
+		styles: [ 'full', 'alignLeft', 'alignRight' ]
 	},
 	heading: {
 		options: [
@@ -104,12 +100,9 @@ BalloonEditor.defaultConfig = {
 		]
 	},
 	table: {
-		contentToolbar: [
-			'tableColumn',
-			'tableRow',
-			'mergeTableCells'
-		]
+		contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
 	},
+	options: [ 'left', 'right', 'center' ],
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'ru'
 };

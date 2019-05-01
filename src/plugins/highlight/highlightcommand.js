@@ -1,12 +1,15 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
 
 export default class CustomHighlightCommand extends Command {
+	/**
+	 * @inheritDoc
+	 */
 	refresh() {
 		const model = this.editor.model;
 		const doc = model.document;
 
-		this.value = doc.selection.getAttribute( 'highlight' );
-		this.isEnabled = model.schema.checkAttributeInSelection( doc.selection, 'highlight' );
+		this.value = doc.selection.getAttribute( 'customHighlight' );
+		this.isEnabled = model.schema.checkAttributeInSelection( doc.selection, 'customHighlight' );
 	}
 
 	execute( options = {} ) {
@@ -14,40 +17,45 @@ export default class CustomHighlightCommand extends Command {
 		const document = model.document;
 		const selection = document.selection;
 
-		const highlighter = options.value;
+		const customHighlighter = options.value;
 
 		model.change( writer => {
-			const ranges = model.schema.getValidRanges( selection.getRanges(), 'highlight' );
+			const ranges = model.schema.getValidRanges( selection.getRanges(), 'customHighlight' );
 
 			if ( selection.isCollapsed ) {
 				const position = selection.getFirstPosition();
 
-				if ( selection.hasAttribute( 'highlight' ) ) {
+				// When selection is inside text with `customHighlight` attribute.
+				if ( selection.hasAttribute( 'customHighlight' ) ) {
+					// Find the full customHighlighted range.
 					const isSameHighlight = value => {
-						return value.item.hasAttribute( 'highlight' ) && value.item.getAttribute( 'highlight' ) === this.value;
+						return value.item.hasAttribute( 'customHighlight' ) && value.item.getAttribute( 'customHighlight' ) === this.value;
 					};
 
-					const highlightStart = position.getLastMatchingPosition( isSameHighlight, { direction: 'backward' } );
-					const highlightEnd = position.getLastMatchingPosition( isSameHighlight );
+					const customHighlightStart = position.getLastMatchingPosition( isSameHighlight, { direction: 'backward' } );
+					const customHighlightEnd = position.getLastMatchingPosition( isSameHighlight );
 
-					const highlightRange = writer.createRange( highlightStart, highlightEnd );
+					const customHighlightRange = writer.createRange( customHighlightStart, customHighlightEnd );
 
-					if ( !highlighter || this.value === highlighter ) {
-						writer.removeAttribute( 'highlight', highlightRange );
-						writer.removeSelectionAttribute( 'highlight' );
+					// Then depending on current value...
+					if ( !customHighlighter || this.value === customHighlighter ) {
+						// ...remove attribute when passing customHighlighter different then current or executing "eraser".
+						writer.removeAttribute( 'customHighlight', customHighlightRange );
+						writer.removeSelectionAttribute( 'customHighlight' );
 					} else {
-						writer.setAttribute( 'highlight', highlighter, highlightRange );
-						writer.setSelectionAttribute( 'highlight', highlighter );
+						// ...update `customHighlight` value.
+						writer.setAttribute( 'customHighlight', customHighlighter, customHighlightRange );
+						writer.setSelectionAttribute( 'customHighlight', customHighlighter );
 					}
-				} else if ( highlighter ) {
-					writer.setSelectionAttribute( 'highlight', highlighter );
+				} else if ( customHighlighter ) {
+					writer.setSelectionAttribute( 'customHighlight', customHighlighter );
 				}
 			} else {
 				for ( const range of ranges ) {
-					if ( highlighter ) {
-						writer.setAttribute( 'highlight', highlighter, range );
+					if ( customHighlighter ) {
+						writer.setAttribute( 'customHighlight', customHighlighter, range );
 					} else {
-						writer.removeAttribute( 'highlight', range );
+						writer.removeAttribute( 'customHighlight', range );
 					}
 				}
 			}
