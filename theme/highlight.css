@@ -71,7 +71,7 @@
 	border-radius: 4px !important;
 }
 
-.ck-dropdown__panel .ck-toolbar .ck-icon {
+.ck-custom-highlight .ck-dropdown__panel .ck-toolbar .ck-icon {
 	display: none;
 }
 
@@ -104,12 +104,12 @@
 		z-index: 3;
 	}
 
-	.ck.ck-button.pen-$color.ck-on:before {
-		content: url('../src/assets/icons/done.svg');
+	.ck.ck-button.ck-on.pen-$color:before {
+		content: url('../src/assets/icons/done.svg') !important;
 	}
 
-	.ck.ck-button.marker-$color.ck-on:before {
-		content: url('../src/assets/icons/done-black.svg');
+	.ck.ck-button.ck-on.marker-$color:before {
+		content: url('../src/assets/icons/done-black.svg') !important;
 	}
 }
 

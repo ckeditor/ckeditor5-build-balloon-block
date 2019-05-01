@@ -6,15 +6,6 @@
 	color: rgba(255, 255, 255, 1) !important;
 }
 
-.ck-alignment-dropdown .ck-toolbar {
-	background-color: #ffffff !important;
-}
-
-.ck-alignment-dropdown .ck-dropdown__panel .ck-button {
-	background-color: #ffffff !important;
-	color: #333333 !important;
-	height: 44px !important;
-}
 
 .ck.ck-button.ck-on {
 	color: #1ebfe9 !important;
@@ -40,4 +31,14 @@
 
 .ck-rounded-corners .ck.ck-dropdown .ck-dropdown__panel .ck-list .ck-list__item .ck-button {
 	border-radius: 0 !important;
+}
+
+.ck-alignment-dropdown .ck-toolbar {
+	background-color: #ffffff !important;
+}
+
+.ck-alignment-dropdown .ck-dropdown__panel .ck-button {
+	background-color: #ffffff !important;
+	color: #333333 !important;
+	height: 44px !important;
 }
