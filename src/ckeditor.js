@@ -38,6 +38,7 @@ import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 import '../theme/theme.css';
 import CustomHighlight from './plugins/highlight/highlight';
+import HeadingButtonsUI from '@ckeditor/ckeditor5-heading/src/headingbuttonsui';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -61,6 +62,7 @@ BalloonEditor.builtinPlugins = [
 	CKFinder,
 	EasyImage,
 	Heading,
+	HeadingButtonsUI,
 	Image,
 	ImageCaption,
 	ImageStyle,
@@ -78,7 +80,7 @@ BalloonEditor.builtinPlugins = [
 // Editor configuration.
 BalloonEditor.defaultConfig = {
 	extraPlugins: [	FileUploadAdapterPlugin ],
-	blockToolbar: [ 'heading', 'customHighlight',
+	blockToolbar: [ 'heading', 'customHighlight', 'alignment',
 		'delimiter', 'bulletedList', 'imageUpload', 'blockQuote', 'insertTable'
 	],
 	toolbar: {
@@ -100,7 +102,7 @@ BalloonEditor.defaultConfig = {
 		]
 	},
 	table: {
-		contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
+		contentToolbar: [ 'heading1', 'tableColumn', 'tableRow', 'mergeTableCells' ]
 	},
 	alignment: { options: [ 'left', 'right', 'center' ] },
 	// This value must be kept in sync with the language defined in webpack.config.js.

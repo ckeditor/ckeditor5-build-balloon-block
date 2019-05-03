@@ -12,6 +12,8 @@
 	--ck-color-button-default-background: var(--ck-custom-background) !important;
 	--ck-color-base-background: var(--ck-custom-background) !important;
 	--ck-color-button-default-hover-background: rgba(255, 255, 255, 1) !important;
+	--ck-color-button-default-active-background: #ffffff !important;
+	--ck-color-button-default-active-shadow: transparent !important;
 	--ck-color-button-on-background: var(--ck-custom-foreground) !important;
 	--ck-color-button-on-hover-background: rgba(255, 255, 255, 1) !important;
 	--ck-color-focus-border: transparent !important;
@@ -33,6 +35,7 @@
 	--ck-switch-button-toggle-width: 32px !important;
 	--ck-switch-button-toggle-transform: calc(var(--ck-switch-button-toggle-width) - 2 * var(--ck-switch-button-toggle-spacing) - var(--ck-switch-button-toggle-inner-size)) !important;
 	--ck-color-widget-editable-focus-background: rgba(255, 255, 255, 0) !important;
+	--ck-insert-table-dropdown-padding: 16px !important;
 }
 
 .ck.ck-toolbar {
@@ -73,7 +76,7 @@
 .ck.ck-button.ck-on {
 	color: #1ebfe9 !important;
 }
-
+.ck.ck-button:active,
 .ck.ck-button.ck-on:hover,
 .ck.ck-button.ck-off:hover {
 	color: var(--ck-custom-background) !important;
@@ -97,6 +100,17 @@
 	-webkit-box-shadow: var(--ck-custom-shadow) !important;
 	-moz-box-shadow: var(--ck-custom-shadow) !important;
 	box-shadow: var(--ck-custom-shadow) !important;
+}
+
+.ck-dropdown__container {
+	margin-top: 14px !important;
+	background-color: var(--ck-color-dropdown-panel-background) !important;
+	box-shadow: var(--ck-custom-shadow) !important;
+	border-radius: var(--ck-border-radius) !important;
+}
+
+.ck-alignment-dropdown .ck-dropdown__container .ck-button {
+	margin: 4px !important;
 }
 
 .ck-dropdown__panel .ck-list {
@@ -347,6 +361,8 @@
 @mixin custom-highlight-pen-color medium-gray;
 @mixin custom-highlight-pen-color light-gray;
 
+.ck-alignment-dropdown .ck-dropdown__panel,
+.ck-custom-table-dropdown .ck-dropdown__panel,
 .ck-custom-highlight .ck-dropdown__panel {
 	top: unset !important;
 	padding: 0 !important;
@@ -456,11 +472,15 @@
 }
 
 /* TABLE */
-.ck-insert-table-dropdown__grid {
+.ck-custom-table-dropdown .ck-dropdown__container .ck-list {
 	padding: 8px !important;
 }
 
+.ck-insert-table-dropdown__grid {
+	padding: 16px 16px 8px 16px !important;
+}
+
 .ck-insert-table-dropdown__label {
-	padding-bottom: 8px !important;
+	padding-bottom: 16px !important;
 	line-height: normal !important;
 }

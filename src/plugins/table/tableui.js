@@ -1,5 +1,5 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import { addListToDropdown, createDropdown } from '@ckeditor/ckeditor5-ui/src/dropdown/utils';
+import { createDropdown } from '@ckeditor/ckeditor5-ui/src/dropdown/utils';
 import Model from '@ckeditor/ckeditor5-ui/src/model';
 import Collection from '@ckeditor/ckeditor5-utils/src/collection';
 
@@ -10,36 +10,33 @@ import tableColumnIcon from '../../assets/icons/table-column.svg';
 import tableRowIcon from '../../assets/icons/table-row.svg';
 import tableMergeCellIcon from '@ckeditor/ckeditor5-table/theme/icons/table-merge-cell.svg';
 import ContainerView from '../container';
+import { addListToDropdownContainer } from '../utils';
 
 export default class TableUI extends Plugin {
 	init() {
 		const editor = this.editor;
-		const t = this.editor.t;
 
 		editor.ui.componentFactory.add( 'insertTable', locale => {
 			const command = editor.commands.get( 'insertTable' );
 			const dropdownView = createDropdown( locale );
-			//
-			// dropdownView.set( {
-			//  class: [ 'ck-custom-insert-table' ]
-			// } );
+
+			dropdownView.set( {
+				panelPosition: 'se',
+				class: [ 'ck-custom-table-dropdown' ]
+			} );
 
 			dropdownView.bind( 'isEnabled' ).to( command );
 
 			// Decorate dropdown's button.
 			dropdownView.buttonView.set( {
 				icon: tableIcon,
-				label: t( 'Insert table' ),
+				label: 'Вставить таблицу',
 				tooltip: true
 			} );
 
 			// Prepare custom view for dropdown's panel.
 			const insertTableView = new InsertTableView( locale );
 			const container = new ContainerView( 'div', [ insertTableView ] );
-
-			dropdownView.render();
-
-			dropdownView.panelView.children.add( container );
 
 			insertTableView.delegate( 'execute' ).to( dropdownView );
 
@@ -54,6 +51,9 @@ export default class TableUI extends Plugin {
 				editor.editing.view.focus();
 			} );
 
+			dropdownView.render();
+			dropdownView.panelView.children.add( container );
+
 			return dropdownView;
 		} );
 
@@ -63,7 +63,7 @@ export default class TableUI extends Plugin {
 					type: 'switchbutton',
 					model: {
 						commandName: 'setTableColumnHeader',
-						label: t( 'Header column' ),
+						label: 'Столбец заголовков',
 						bindIsOn: true
 					}
 				},
@@ -72,26 +72,26 @@ export default class TableUI extends Plugin {
 					type: 'button',
 					model: {
 						commandName: 'insertTableColumnLeft',
-						label: t( 'Insert column left' )
+						label: 'Вставить столбец слева'
 					}
 				},
 				{
 					type: 'button',
 					model: {
 						commandName: 'insertTableColumnRight',
-						label: t( 'Insert column right' )
+						label: 'Вставить столбец справа'
 					}
 				},
 				{
 					type: 'button',
 					model: {
 						commandName: 'removeTableColumn',
-						label: t( 'Delete column' )
+						label: 'Удалить столбец'
 					}
 				}
 			];
 
-			return this._prepareDropdown( t( 'Column' ), tableColumnIcon, options, locale );
+			return this._prepareDropdown( 'Столбец', tableColumnIcon, options, locale );
 		} );
 
 		editor.ui.componentFactory.add( 'tableRow', locale => {
@@ -100,7 +100,7 @@ export default class TableUI extends Plugin {
 					type: 'switchbutton',
 					model: {
 						commandName: 'setTableRowHeader',
-						label: t( 'Header row' ),
+						label: 'Строка заголовков',
 						bindIsOn: true
 					}
 				},
@@ -109,26 +109,26 @@ export default class TableUI extends Plugin {
 					type: 'button',
 					model: {
 						commandName: 'insertTableRowBelow',
-						label: t( 'Insert row below' )
+						label: 'Вставить строку ниже'
 					}
 				},
 				{
 					type: 'button',
 					model: {
 						commandName: 'insertTableRowAbove',
-						label: t( 'Insert row above' )
+						label: 'Вставить строку выше'
 					}
 				},
 				{
 					type: 'button',
 					model: {
 						commandName: 'removeTableRow',
-						label: t( 'Delete row' )
+						label: 'Удалить строку'
 					}
 				}
 			];
 
-			return this._prepareDropdown( t( 'Row' ), tableRowIcon, options, locale );
+			return this._prepareDropdown( 'Строка', tableRowIcon, options, locale );
 		} );
 
 		editor.ui.componentFactory.add( 'mergeTableCells', locale => {
@@ -137,28 +137,28 @@ export default class TableUI extends Plugin {
 					type: 'button',
 					model: {
 						commandName: 'mergeTableCellUp',
-						label: t( 'Merge cell up' )
+						label: 'Объединить с ячейкой сверху'
 					}
 				},
 				{
 					type: 'button',
 					model: {
 						commandName: 'mergeTableCellRight',
-						label: t( 'Merge cell right' )
+						label: 'Объединить с ячейкой справа'
 					}
 				},
 				{
 					type: 'button',
 					model: {
 						commandName: 'mergeTableCellDown',
-						label: t( 'Merge cell down' )
+						label: 'Объединить с ячейкой снизу'
 					}
 				},
 				{
 					type: 'button',
 					model: {
 						commandName: 'mergeTableCellLeft',
-						label: t( 'Merge cell left' )
+						label: 'Объединить с ячейкой слева'
 					}
 				},
 				{ type: 'separator' },
@@ -166,19 +166,19 @@ export default class TableUI extends Plugin {
 					type: 'button',
 					model: {
 						commandName: 'splitTableCellVertically',
-						label: t( 'Split cell vertically' )
+						label: 'Разделить ячейку вертикально'
 					}
 				},
 				{
 					type: 'button',
 					model: {
 						commandName: 'splitTableCellHorizontally',
-						label: t( 'Split cell horizontally' )
+						label: 'Разделить ячейку горизонтально'
 					}
 				}
 			];
 
-			return this._prepareDropdown( t( 'Merge cells' ), tableMergeCellIcon, options, locale );
+			return this._prepareDropdown( 'Объединить ячейки', tableMergeCellIcon, options, locale );
 		} );
 	}
 
@@ -196,6 +196,11 @@ export default class TableUI extends Plugin {
 		const editor = this.editor;
 
 		const dropdownView = createDropdown( locale );
+
+		dropdownView.set( {
+			panelPosition: 'se',
+			class: 'ck-custom-table-dropdown'
+		} );
 		const commands = [];
 
 		// Prepare dropdown list items for list dropdown.
@@ -204,8 +209,6 @@ export default class TableUI extends Plugin {
 		for ( const option of options ) {
 			addListOption( option, editor, commands, itemDefinitions );
 		}
-
-		addListToDropdown( dropdownView, itemDefinitions );
 
 		// Decorate dropdown's button.
 		dropdownView.buttonView.set( {
@@ -223,6 +226,10 @@ export default class TableUI extends Plugin {
 			editor.execute( evt.source.commandName );
 			editor.editing.view.focus();
 		} );
+
+		const containerListView = new ContainerView( 'div', [ addListToDropdownContainer( dropdownView, itemDefinitions ) ] );
+		dropdownView.render();
+		dropdownView.panelView.children.add( containerListView );
 
 		return dropdownView;
 	}

@@ -5,10 +5,10 @@ import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import colorIcon from '../../assets/icons/square.svg';
 import eraserIcon from '../../assets/icons/eraser.svg';
 import brushIcon from '../../assets/icons/brush.svg';
-import ToolbarView from '@ckeditor/ckeditor5-ui/src/toolbar/toolbarview';
 
 import TextView from '../textview';
 import { createDropdown } from '@ckeditor/ckeditor5-ui/src/dropdown/utils';
+import { addToolbarToDropdownContainer } from '../utils';
 import ContainerView from '../container';
 
 export default class CustomHighlightUI extends Plugin {
@@ -79,6 +79,7 @@ export default class CustomHighlightUI extends Plugin {
 			const dropdownView = createDropdown( locale );
 
 			dropdownView.set( {
+				panelPosition: 'se',
 				class: [ 'ck-custom-highlight' ]
 			} );
 
@@ -130,11 +131,3 @@ export default class CustomHighlightUI extends Plugin {
 	}
 }
 
-function addToolbarToDropdownContainer( dropdownView, buttons ) {
-	const toolbarView = dropdownView.toolbarView = new ToolbarView();
-
-	buttons.map( view => toolbarView.items.add( view ) );
-	toolbarView.items.delegate( 'execute' ).to( dropdownView );
-
-	return toolbarView;
-}

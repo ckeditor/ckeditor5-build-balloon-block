@@ -82,6 +82,7 @@ export default class HeadingUI extends Plugin {
 
 			dropdownView.extendTemplate( {
 				attributes: {
+					'panelPosition': 'se',
 					class: [
 						'ck-heading-dropdown'
 					]

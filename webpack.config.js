@@ -14,6 +14,7 @@ const CKEditorWebpackPlugin = require( '@ckeditor/ckeditor5-dev-webpack-plugin' 
 const UglifyJsWebpackPlugin = require( 'uglifyjs-webpack-plugin' );
 
 const icons = [
+	new webpack.NormalModuleReplacementPlugin( /heading1\.svg/, __dirname + '/src/assets/icons/h1.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /bold\.svg/, __dirname + '/src/assets/icons/bold.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /italic\.svg/, __dirname + '/src/assets/icons/italic.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /underline\.svg/, __dirname + '/src/assets/icons/underline.svg' ),
@@ -22,21 +23,15 @@ const icons = [
 	new webpack.NormalModuleReplacementPlugin( /numberedlist\.svg/, __dirname + '/src/assets/icons/numberedlist.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /bulletedlist\.svg/, __dirname + '/src/assets/icons/bulletedlist.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /link\.svg/, __dirname + '/src/assets/icons/link.svg' ),
-	new webpack.NormalModuleReplacementPlugin( /align-center\.svg/, __dirname + '/src/assets/icons/align-center.svg' ),
-	// new webpack.NormalModuleReplacementPlugin( /align-justify\.svg/, __dirname + '/src/assets/icons/align-justify.svg' ),
-	new webpack.NormalModuleReplacementPlugin( /align-left\.svg/, __dirname + '/src/assets/icons/align-left.svg' ),
-	new webpack.NormalModuleReplacementPlugin( /align-right\.svg/, __dirname + '/src/assets/icons/align-right.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /linkui\.js/, __dirname + '/src/plugins/link/linkui.js' ),
 	new webpack.NormalModuleReplacementPlugin( /headingui\.js/, __dirname + '/src/plugins/heading/headingui.js' ),
-	new webpack.NormalModuleReplacementPlugin( /table\.svg/, __dirname + '/src/assets/icons/table.svg' ),
-	new webpack.NormalModuleReplacementPlugin( /table-column\.svg/, __dirname + '/src/assets/icons/table-column.svg' ),
-	new webpack.NormalModuleReplacementPlugin( /table-row\.svg/, __dirname + '/src/assets/icons/table-row.svg' ),
 	// new webpack.NormalModuleReplacementPlugin( /table-merge-cell\.svg/, __dirname + '/src/assets/icons/link.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /pilcrow\.svg/, __dirname + '/src/assets/icons/plus-add.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /image\.svg/, __dirname + '/src/assets/icons/picture.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /dropdown-arrow\.svg/, __dirname + '/src/assets/icons/dropdown-arrow.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /tooltipview\.js/, __dirname + '/src/plugins/tooltip/tooltip.js' ),
 	new webpack.NormalModuleReplacementPlugin( /tableui\.js/, __dirname + '/src/plugins/table/tableui.js' ),
+	new webpack.NormalModuleReplacementPlugin( /alignmentui\.js/, __dirname + '/src/plugins/alignment/alignmentui.js' ),
 ];
 
 module.exports = {
