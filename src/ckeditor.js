@@ -78,12 +78,12 @@ BalloonEditor.builtinPlugins = [
 // Editor configuration.
 BalloonEditor.defaultConfig = {
 	extraPlugins: [	FileUploadAdapterPlugin ],
-	blockToolbar: [
-		'delimiter', 'bulletedList', 'imageUpload', 'blockQuote', 'insertTable', 'alignment'
+	blockToolbar: [ 'heading', 'customHighlight',
+		'delimiter', 'bulletedList', 'imageUpload', 'blockQuote', 'insertTable'
 	],
 	toolbar: {
 		items: [
-			'bold', 'italic', 'underline', 'strikethrough', '|', 'numberedList', 'bulletedList', 'link',
+			'bold', 'italic', 'underline', 'strikethrough', '|', 'numberedList', 'bulletedList', 'alignment', 'link',
 			'heading', 'customHighlight', 'blockQuote'
 		]
 	},
@@ -93,9 +93,9 @@ BalloonEditor.defaultConfig = {
 	},
 	heading: {
 		options: [
-			{ model: 'paragraph', title: 'Параграф', class: 'ck-heading_paragraph' },
 			{ model: 'heading1', view: 'h1', title: 'Заголовок H1', class: 'ck-heading_heading1' },
 			{ model: 'heading2', view: 'h2', title: 'Заголовок H2', class: 'ck-heading_heading2' },
+			{ model: 'paragraph', title: 'Параграф', class: 'ck-heading_paragraph' },
 			// { model: 'code', view: 'code', title: 'Код', class: 'ck-heading_code' }
 		]
 	},

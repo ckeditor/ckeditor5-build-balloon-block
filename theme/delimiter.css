@@ -1,13 +1,15 @@
 .ck-delimiter.ck-placeholder::before,
 .ck-delimiter::before {
 	display: inline-block;
-	content: "***" !important;
+	content: " " !important;
 	font-size: 30px;
 	line-height: 65px;
-	height: 30px;
-	letter-spacing: 0.2em;
 	width: 100%;
-	text-align: center;
+	height: 0px;
+	width: 100%;
+	margin: 7px auto 8px auto;
+	letter-spacing: 0.2em;
+	border-bottom: solid 1px #e4e5e9;
 }
 
 .ck-delimiter.ck-widget,

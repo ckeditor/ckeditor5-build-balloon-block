@@ -35,6 +35,8 @@ const icons = [
 	new webpack.NormalModuleReplacementPlugin( /pilcrow\.svg/, __dirname + '/src/assets/icons/plus-add.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /image\.svg/, __dirname + '/src/assets/icons/picture.svg' ),
 	new webpack.NormalModuleReplacementPlugin( /dropdown-arrow\.svg/, __dirname + '/src/assets/icons/dropdown-arrow.svg' ),
+	new webpack.NormalModuleReplacementPlugin( /tooltipview\.js/, __dirname + '/src/plugins/tooltip/tooltip.js' ),
+	new webpack.NormalModuleReplacementPlugin( /tableui\.js/, __dirname + '/src/plugins/table/tableui.js' ),
 ];
 
 module.exports = {

@@ -5,9 +5,11 @@ import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import colorIcon from '../../assets/icons/square.svg';
 import eraserIcon from '../../assets/icons/eraser.svg';
 import brushIcon from '../../assets/icons/brush.svg';
+import ToolbarView from '@ckeditor/ckeditor5-ui/src/toolbar/toolbarview';
 
 import TextView from '../textview';
-import { createDropdown, addToolbarToDropdown } from '@ckeditor/ckeditor5-ui/src/dropdown/utils';
+import { createDropdown } from '@ckeditor/ckeditor5-ui/src/dropdown/utils';
+import ContainerView from '../container';
 
 export default class CustomHighlightUI extends Plugin {
 	static get pluginName() {
@@ -112,14 +114,27 @@ export default class CustomHighlightUI extends Plugin {
 			penButtons.push( componentFactory.create( 'removeCustomHighlight' ) );
 			customHighlightButtons.push( componentFactory.create( 'removeCustomHighlight' ) );
 
+			const container = new ContainerView( 'div', [
+				headerPen,
+				addToolbarToDropdownContainer( dropdownView, penButtons ),
+				headerHighlight,
+				addToolbarToDropdownContainer( dropdownView, customHighlightButtons )
+			] );
+
 			dropdownView.render();
 
-			dropdownView.panelView.children.add( headerPen );
-			addToolbarToDropdown( dropdownView, penButtons );
-			dropdownView.panelView.children.add( headerHighlight );
-			addToolbarToDropdown( dropdownView, customHighlightButtons );
+			dropdownView.panelView.children.add( container );
 
 			return dropdownView;
 		} );
 	}
+}
+
+function addToolbarToDropdownContainer( dropdownView, buttons ) {
+	const toolbarView = dropdownView.toolbarView = new ToolbarView();
+
+	buttons.map( view => toolbarView.items.add( view ) );
+	toolbarView.items.delegate( 'execute' ).to( dropdownView );
+
+	return toolbarView;
 }
