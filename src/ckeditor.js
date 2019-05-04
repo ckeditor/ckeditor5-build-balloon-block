@@ -38,8 +38,11 @@ import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 import '../theme/theme.css';
 import CustomHighlight from './plugins/highlight/highlight';
+import HeadingButtonsUI from '@ckeditor/ckeditor5-heading/src/headingbuttonsui';
+import DelimiterToolbar from './plugins/delimiter/delimitertoolbar';
 
-export default class BalloonEditor extends BalloonEditorBase {}
+export default class BalloonEditor extends BalloonEditorBase {
+}
 
 // Plugins to include in the build.
 BalloonEditor.builtinPlugins = [
@@ -54,6 +57,7 @@ BalloonEditor.builtinPlugins = [
 	BlockToolbar,
 	Bold,
 	Delimiter,
+	DelimiterToolbar,
 	Italic,
 	Strikethrough,
 	Underline,
@@ -61,6 +65,7 @@ BalloonEditor.builtinPlugins = [
 	CKFinder,
 	EasyImage,
 	Heading,
+	HeadingButtonsUI,
 	Image,
 	ImageCaption,
 	ImageStyle,
@@ -77,13 +82,13 @@ BalloonEditor.builtinPlugins = [
 
 // Editor configuration.
 BalloonEditor.defaultConfig = {
-	extraPlugins: [	FileUploadAdapterPlugin ],
+	extraPlugins: [ FileUploadAdapterPlugin ],
 	blockToolbar: [
-		'delimiter', 'bulletedList', 'imageUpload', 'blockQuote', 'insertTable', 'alignment'
+		'delimiter', 'bulletedList', 'imageUpload', 'blockQuote', 'insertTable'
 	],
 	toolbar: {
 		items: [
-			'bold', 'italic', 'underline', 'strikethrough', '|', 'numberedList', 'bulletedList', 'link',
+			'bold', 'italic', 'underline', 'strikethrough', '|', 'numberedList', 'bulletedList', 'alignment', 'link',
 			'heading', 'customHighlight', 'blockQuote'
 		]
 	},
@@ -93,14 +98,14 @@ BalloonEditor.defaultConfig = {
 	},
 	heading: {
 		options: [
-			{ model: 'paragraph', title: 'Параграф', class: 'ck-heading_paragraph' },
 			{ model: 'heading1', view: 'h1', title: 'Заголовок H1', class: 'ck-heading_heading1' },
 			{ model: 'heading2', view: 'h2', title: 'Заголовок H2', class: 'ck-heading_heading2' },
+			{ model: 'paragraph', title: 'Параграф', class: 'ck-heading_paragraph' },
 			// { model: 'code', view: 'code', title: 'Код', class: 'ck-heading_code' }
 		]
 	},
 	table: {
-		contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
+		contentToolbar: [ 'heading1', 'tableColumn', 'tableRow', 'mergeTableCells' ]
 	},
 	alignment: { options: [ 'left', 'right', 'center' ] },
 	// This value must be kept in sync with the language defined in webpack.config.js.
