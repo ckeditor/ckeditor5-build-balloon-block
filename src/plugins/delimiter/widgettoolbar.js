@@ -4,7 +4,7 @@ import ToolbarView from '@ckeditor/ckeditor5-ui/src/toolbar/toolbarview';
 import CKEditorError from '@ckeditor/ckeditor5-utils/src/ckeditorerror';
 
 const positionEast = ( targetRect, balloonRect ) => ( {
-	top: targetRect.top + ( targetRect.height - balloonRect.height ) + 2,
+	top: targetRect.top + ( targetRect.height - balloonRect.height ) + 3,
 	left: targetRect.left + targetRect.width,
 } );
 

@@ -84,7 +84,7 @@ BalloonEditor.builtinPlugins = [
 BalloonEditor.defaultConfig = {
 	extraPlugins: [ FileUploadAdapterPlugin ],
 	blockToolbar: [
-		'delimiter', 'bulletedList', 'imageUpload', 'blockQuote', 'insertTable'
+		'delimiter', 'bulletedList', 'imageUpload', 'blockQuote', 'insertTable', 'mediaEmbed'
 	],
 	toolbar: {
 		items: [
@@ -108,6 +108,7 @@ BalloonEditor.defaultConfig = {
 		contentToolbar: [ 'heading1', 'tableColumn', 'tableRow', 'mergeTableCells' ]
 	},
 	alignment: { options: [ 'left', 'right', 'center' ] },
+	mediaEmbed: { previewsInData: true },
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'ru'
 };
