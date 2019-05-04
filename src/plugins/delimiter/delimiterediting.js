@@ -2,6 +2,7 @@ import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import { toWidget } from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 import InsertDelimiterCommand from './delimitercommand';
+import RemoveDelimiterCommand from './removedelimitercommand2';
 
 export default class DelimiterEditing extends Plugin {
 	static get requires() {
@@ -13,6 +14,7 @@ export default class DelimiterEditing extends Plugin {
 		this._defineConverters();
 
 		this.editor.commands.add( 'insertDelimiter', new InsertDelimiterCommand( this.editor ) );
+		this.editor.commands.add( 'removeDelimiter', new RemoveDelimiterCommand( this.editor ) );
 	}
 
 	_defineSchema() {
@@ -47,8 +49,8 @@ export default class DelimiterEditing extends Plugin {
 			model: 'delimiter',
 			view: ( modelElement, viewWriter ) => {
 				const section = viewWriter.createContainerElement( 'section', { class: 'ck-delimiter' } );
-
-				return toWidget( section, viewWriter, { label: 'разделитель' } );
+				viewWriter.setCustomProperty( 'delimiter', true, section );
+				return toWidget( section, viewWriter, { label: 'разделитель', hasSelectionHandler: true } );
 			}
 		} );
 	}

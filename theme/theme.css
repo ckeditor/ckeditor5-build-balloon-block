@@ -1,5 +1,4 @@
 @import "fonts.css";
-@import "delimiter.css";
 
 :root {
 	--ck-border-radius: 8px !important;
@@ -66,7 +65,7 @@
 	font-weight: 600;
 	line-height: 1.25;
 	color: #9aa5ab;
-	margin-bottom: 12px;
+	margin-bottom: 16px;
 }
 
 .ck.ck-button.ck-off {
@@ -196,8 +195,7 @@
 }
 
 .ck.ck-link-form {
-	padding: 22px 16px !important;
-	/*background-color: #ffffff !important;*/
+	padding: 20px 16px !important;
 	border: 0px solid !important;
 	border-radius: 4px !important;
 	outline: none;
@@ -208,41 +206,41 @@
 	color: #ffffff;
 }
 
-.ck.ck-link-form .ck-input-text,
-.ck.ck-link-form .ck-label {
-	font-weight: normal;
-	line-height: 1.21;
-	letter-spacing: normal;
-	color: #ffffff;
-}
-
 .ck.ck-link-form .ck-label {
 	font-size: 12px;
 	letter-spacing: 0.5px;
 	margin-bottom: 6px;
 	line-height: 1.42;
+	color: #ffffff;
+	font-weight: normal;
 	text-transform: uppercase;
 }
 
 .ck.ck-link-form .ck-input-text {
 	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.21;
+	letter-spacing: normal;
 }
 
 .ck.ck-link-form .ck-input {
 	height: 40px;
 	border: 1px solid #9aa5ab;
-	padding: auto 16px;
-	margin-bottom: 20px;
+	margin-bottom: 16px;
+	background-color: #ffffff !important;
+	color: #556066 !important;
+	border-radius: 4px !important;
 }
 
 .ck-link-form .ck-button {
 	float: right;
-	margin-bottom: 20px;
+	margin-bottom: 16px;
 	font-size: 16px;
 	font-weight: 600;
 	line-height: 1.25;
 	height: 40px;
-	padding: 0 26px !important;
+	padding-right: 20px !important;
+	padding-left: 20px !important;
 	border-radius: 4px !important;
 	background-color: #1f8ceb;
 }
@@ -272,7 +270,6 @@
 
 .ck.ck-block-toolbar-button.ck-on .ck-icon {
 	transform: rotate(45deg);
-	/*transform: translateX(calc(-1.5*var(--ck-spacing-large)));*/
 }
 
 .ck-dropdown__panel .ck-button:hover {
@@ -456,6 +453,7 @@
 
 .ck-button__toggle__inner {
 	border-radius: 50% !important;
+	cursor: pointer !important;
 }
 
 .ck.ck-button.ck-switchbutton.ck-on .ck-button__toggle .ck-button__toggle__inner {
@@ -483,4 +481,42 @@
 .ck-insert-table-dropdown__label {
 	padding-bottom: 16px !important;
 	line-height: normal !important;
+}
+
+/* DELIMITER */
+
+.ck-delimiter.ck-placeholder::before,
+.ck-delimiter::before {
+	display: inline-block;
+	content: " " !important;
+	font-size: 30px;
+	line-height: 65px;
+	width: 100%;
+	height: 0px;
+	width: 100%;
+	margin: 7px auto 8px auto;
+	letter-spacing: 0.2em;
+	border-bottom: solid 1px #e4e5e9;
+}
+
+.ck-delimiter.ck-widget,
+.ck-delimiter.ck-widget:hover,
+.ck-delimiter.ck-widget_selected,
+.ck-delimiter.ck-widget_selected:hover {
+	outline: none !important;
+	transition: none !important;
+}
+
+.ck-delimiter .ck-widget__selection-handler,
+.ck-delimiter-remove-container:before,
+.ck-delimiter-remove-container:after {
+	display: none !important;
+}
+
+.ck-delimiter-remove-container,
+.ck-delimiter-remove-container .ck-toolbar,
+.ck-delimiter-remove-container .ck-button {
+	border: none !important;
+	box-shadow: none !important;
+	background-color: transparent !important;
 }

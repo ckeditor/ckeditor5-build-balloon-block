@@ -39,8 +39,10 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 import '../theme/theme.css';
 import CustomHighlight from './plugins/highlight/highlight';
 import HeadingButtonsUI from '@ckeditor/ckeditor5-heading/src/headingbuttonsui';
+import DelimiterToolbar from './plugins/delimiter/delimitertoolbar';
 
-export default class BalloonEditor extends BalloonEditorBase {}
+export default class BalloonEditor extends BalloonEditorBase {
+}
 
 // Plugins to include in the build.
 BalloonEditor.builtinPlugins = [
@@ -55,6 +57,7 @@ BalloonEditor.builtinPlugins = [
 	BlockToolbar,
 	Bold,
 	Delimiter,
+	DelimiterToolbar,
 	Italic,
 	Strikethrough,
 	Underline,
@@ -79,7 +82,7 @@ BalloonEditor.builtinPlugins = [
 
 // Editor configuration.
 BalloonEditor.defaultConfig = {
-	extraPlugins: [	FileUploadAdapterPlugin ],
+	extraPlugins: [ FileUploadAdapterPlugin ],
 	blockToolbar: [ 'heading', 'customHighlight', 'alignment',
 		'delimiter', 'bulletedList', 'imageUpload', 'blockQuote', 'insertTable'
 	],
