@@ -83,7 +83,7 @@ BalloonEditor.builtinPlugins = [
 // Editor configuration.
 BalloonEditor.defaultConfig = {
 	extraPlugins: [ FileUploadAdapterPlugin ],
-	blockToolbar: [ 'heading', 'customHighlight', 'alignment',
+	blockToolbar: [
 		'delimiter', 'bulletedList', 'imageUpload', 'blockQuote', 'insertTable'
 	],
 	toolbar: {
