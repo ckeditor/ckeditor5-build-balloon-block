@@ -56,6 +56,7 @@
 .ck-dropdown .ck-button {
 	border-radius: var(--ck-border-radius);
 }
+
 .ck-dropdown__button .ck-button__icon {
 	margin-right: 0 !important;
 }
@@ -75,6 +76,7 @@
 .ck.ck-button.ck-on {
 	color: #1ebfe9 !important;
 }
+
 .ck.ck-button:active,
 .ck.ck-button.ck-on:hover,
 .ck.ck-button.ck-off:hover {
@@ -138,7 +140,7 @@
 .ck-alignment-dropdown .ck-dropdown__panel .ck-button {
 	background-color: #ffffff !important;
 	color: #333333 !important;
-	width:32px !important;
+	width: 32px !important;
 	height: 32px !important;
 }
 
@@ -194,6 +196,7 @@
 	border-bottom: 0px solid transparent !important;
 }
 
+.ck.ck-media-form,
 .ck.ck-link-form {
 	padding: 20px 16px !important;
 	border: 0px solid !important;
@@ -202,10 +205,15 @@
 	--ck-color-panel-border: transparent !important;
 }
 
-.ck.ck-link-form .ck-dropdown__header {
-	color: #ffffff;
+.ck.ck-media-form .ck-dropdown__header {
+	color: #333333 !important;
 }
 
+.ck.ck-link-form .ck-dropdown__header {
+	color: #ffffff !important;
+}
+
+.ck.ck-media-form .ck-label,
 .ck.ck-link-form .ck-label {
 	font-size: 12px;
 	letter-spacing: 0.5px;
@@ -216,6 +224,11 @@
 	text-transform: uppercase;
 }
 
+.ck.ck-media-form .ck-label {
+	color: #333333 !important;
+}
+
+.ck.ck-media-form .ck-input-text,
 .ck.ck-link-form .ck-input-text {
 	font-size: 14px;
 	font-weight: normal;
@@ -223,6 +236,7 @@
 	letter-spacing: normal;
 }
 
+.ck.ck-media-form .ck-input,
 .ck.ck-link-form .ck-input {
 	height: 40px;
 	border: 1px solid #9aa5ab;
@@ -230,23 +244,6 @@
 	background-color: #ffffff !important;
 	color: #556066 !important;
 	border-radius: 4px !important;
-}
-
-.ck-link-form .ck-button {
-	float: right;
-	margin-bottom: 16px;
-	font-size: 16px;
-	font-weight: 600;
-	line-height: 1.25;
-	height: 40px;
-	padding-right: 20px !important;
-	padding-left: 20px !important;
-	border-radius: 4px !important;
-	background-color: #1f8ceb;
-}
-
-.ck-link-form .ck-button.ck-disabled {
-	background-color: #c4c7cc;
 }
 
 .ck-link-actions {
@@ -358,6 +355,7 @@
 @mixin custom-highlight-pen-color medium-gray;
 @mixin custom-highlight-pen-color light-gray;
 
+.ck-media-embed-dropdown .ck-dropdown__panel,
 .ck-alignment-dropdown .ck-dropdown__panel,
 .ck-custom-table-dropdown .ck-dropdown__panel,
 .ck-custom-highlight .ck-dropdown__panel {
@@ -460,13 +458,44 @@
 	transform: translateX(var(--ck-switch-button-toggle-transform)) !important;
 }
 
-
 /* IMAGE */
 .ck-content .image > figcaption {
 	background-color: transparent !important;
 	color: #9aa5ab;
 	font-size: 14px;
 	padding: 16px;
+	display: block !important;
+}
+
+/* MEDIA / LINK */
+.ck-media-embed-dropdown .ck-dropdown__container {
+	padding-bottom: 40px !important;
+}
+
+.ck-media-form .ck.ck-button.ck-button_with-text.ck-off,
+.ck-media-form .ck.ck-button.ck-button_with-text.ck-on,
+.ck-link-form .ck-button {
+	float: right !important;
+	margin-bottom: 16px !important;
+	font-size: 16px !important;
+	font-weight: 600 !important;
+	line-height: 1.25 !important;
+	height: 40px !important;
+	width: auto !important;
+	padding-right: 20px !important;
+	padding-left: 20px !important;
+	border-radius: 4px !important;
+	background-color: #1f8ceb !important;
+}
+
+.ck-media-form .ck.ck-button.ck-button_with-text.ck-off,
+.ck-media-form .ck.ck-button.ck-button_with-text.ck-off:hover {
+	color: #ffffff !important;
+	background-color: #1f8ceb !important;
+}
+
+.ck-link-form .ck-button.ck-disabled {
+	background-color: #c4c7cc;
 }
 
 /* TABLE */

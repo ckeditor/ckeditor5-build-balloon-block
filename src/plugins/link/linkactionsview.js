@@ -36,8 +36,6 @@ export default class LinkActionsView extends View {
 	constructor( locale ) {
 		super( locale );
 
-		const t = locale.t;
-
 		/**
 		 * Tracks information about DOM focus in the actions.
 		 *
@@ -66,14 +64,14 @@ export default class LinkActionsView extends View {
 		 *
 		 * @member {module:ui/button/buttonview~ButtonView}
 		 */
-		this.unlinkButtonView = this._createButton( t( 'Unlink' ), unlinkIcon, 'unlink' );
+		this.unlinkButtonView = this._createButton( 'Убрать ссылку', unlinkIcon, 'unlink' );
 
 		/**
 		 * The edit link button view.
 		 *
 		 * @member {module:ui/button/buttonview~ButtonView}
 		 */
-		this.editButtonView = this._createButton( t( 'Edit link' ), pencilIcon, 'edit' );
+		this.editButtonView = this._createButton( 'Редактировать ссылку', pencilIcon, 'edit' );
 
 		/**
 		 * Value of the "href" attribute of the link to use in the {@link #previewButtonView}.
@@ -196,12 +194,11 @@ export default class LinkActionsView extends View {
 	_createPreviewButton() {
 		const button = new ButtonView( this.locale );
 		const bind = this.bindTemplate;
-		const t = this.t;
 
 		button.set( {
 			icon: navigateIcon,
 			withText: false,
-			tooltip: t( 'Open link in new tab' )
+			tooltip: 'Открыть ссылку в новой вкладке'
 		} );
 
 		button.extendTemplate( {
@@ -216,7 +213,7 @@ export default class LinkActionsView extends View {
 		} );
 
 		button.bind( 'label' ).to( this, 'href', href => {
-			return href || t( 'This link has no URL' );
+			return href || 'Для этой ссылки не установлен адрес URL';
 		} );
 
 		button.bind( 'isEnabled' ).to( this, 'href', href => !!href );
