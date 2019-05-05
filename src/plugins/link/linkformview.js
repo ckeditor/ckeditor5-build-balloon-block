@@ -88,12 +88,16 @@ export default class LinkFormView extends View {
 	_createUrlInput() {
 		const labeledInput = new LabeledInputView( this.locale, InputTextView );
 
-		labeledInput.set( {
-			class: [ 'ck-input_link' ]
+		labeledInput.extendTemplate( {
+			attributes: {
+				class: [ 'ck-input_link', 'form__row' ]
+			}
 		} );
 
 		labeledInput.label = 'Ссылка';
+		labeledInput.labelView.extendTemplate( { attributes: { class: 'label' } } );
 		labeledInput.inputView.placeholder = 'https://example.com';
+		labeledInput.labelView.extendTemplate( { attributes: { class: 'input' } } );
 
 		return labeledInput;
 	}
@@ -109,7 +113,7 @@ export default class LinkFormView extends View {
 
 		button.extendTemplate( {
 			attributes: {
-				class: className
+				class: [ className, 'button', 'button_theme-1' ]
 			}
 		} );
 
