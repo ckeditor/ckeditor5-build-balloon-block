@@ -242,8 +242,9 @@ function updatePlaceholder( writer, element, config ) {
 // @param {module:engine/view/element~Element} parent
 // @returns {module:engine/view/element~Element|null}
 function getChildPlaceholderHostSubstitute( parent ) {
-	if ( parent && parent.childCount === 1 ) {
-		const firstChild = parent.getChild( 0 );
+	const childCount = parent && parent.childCount;
+	if ( childCount === 1 ) {
+		const firstChild = parent.getChild( childCount - 1 );
 
 		if ( firstChild.is( 'element' ) && !firstChild.is( 'uiElement' ) ) {
 			return firstChild;
