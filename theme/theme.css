@@ -205,10 +205,7 @@
 	--ck-color-panel-border: transparent !important;
 }
 
-.ck.ck-media-form .ck-dropdown__header {
-	color: #333333 !important;
-}
-
+.ck.ck-media-form .ck-dropdown__header,
 .ck.ck-link-form .ck-dropdown__header {
 	color: #ffffff !important;
 }
@@ -224,16 +221,18 @@
 	text-transform: uppercase;
 }
 
-.ck.ck-media-form .ck-label {
-	color: #333333 !important;
-}
-
 .ck.ck-media-form .ck-input-text,
 .ck.ck-link-form .ck-input-text {
 	font-size: 14px;
 	font-weight: normal;
 	line-height: 1.21;
 	letter-spacing: normal;
+	color: #556066 !important;
+}
+
+.ck.ck-media-form .ck-input-text::placeholder,
+.ck.ck-link-form .ck-input-text::placeholder {
+	color: #9aa5ab !important;
 }
 
 .ck.ck-media-form .ck-input,
@@ -470,11 +469,11 @@
 /* MEDIA / LINK */
 .ck-media-embed-dropdown .ck-dropdown__container {
 	padding-bottom: 40px !important;
+	background-color: var(--ck-color-base-background) !important;
 }
 
-.ck-media-form .ck.ck-button.ck-button_with-text.ck-off,
-.ck-media-form .ck.ck-button.ck-button_with-text.ck-on,
-.ck-link-form .ck-button {
+.ck-media-form .ck.ck-button.ck-button-save,
+.ck-link-form .ck-button-save {
 	float: right !important;
 	margin-bottom: 16px !important;
 	font-size: 16px !important;
@@ -485,17 +484,32 @@
 	padding-right: 20px !important;
 	padding-left: 20px !important;
 	border-radius: 4px !important;
-	background-color: #1f8ceb !important;
+	/*background-color: #1f8ceb !important;*/
 }
 
-.ck-media-form .ck.ck-button.ck-button_with-text.ck-off,
-.ck-media-form .ck.ck-button.ck-button_with-text.ck-off:hover {
+.ck-link-form .ck.ck-button.ck-button-save,
+.ck-media-form .ck.ck-button.ck-button_with-text.ck-off {
 	color: #ffffff !important;
+	border-color: #1f8ceb !important;
 	background-color: #1f8ceb !important;
 }
 
-.ck-link-form .ck-button.ck-disabled {
-	background-color: #c4c7cc;
+.ck-link-form .ck.ck-button.ck-button-save:hover,
+.ck-media-form .ck.ck-button.ck-button_with-text.ck-off:hover {
+	background-color: #3095EC !important;
+	border-color: #3095EC !important;
+}
+
+.ck-link-form .ck.ck-button.ck-button-save:active,
+.ck-media-form .ck.ck-button.ck-button_with-text.ck-off:active {
+	background-color: #409DED !important;
+	border-color: #409DED !important;
+}
+
+.ck-link-form .ck.ck-button.ck-button-save:disabled,
+.ck-media-form .ck.ck-button.ck-button_with-text.ck-off:disabled {
+	background-color: #c4c7cc !important;
+	border-color: #c4c7cc !important;
 }
 
 /* TABLE */

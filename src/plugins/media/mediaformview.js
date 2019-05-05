@@ -149,11 +149,16 @@ export default class MediaFormView extends View {
 
 	_createUrlInput() {
 		const labeledInput = new LabeledInputView( this.locale, InputTextView );
-		const inputView = labeledInput.inputView;
 
+		labeledInput.extendTemplate( {
+			attributes: {
+				class: [ 'ck-media-embed_link', 'form__row' ]
+			}
+		} );
 		labeledInput.label = 'Ссылка';
-		labeledInput.infoText = this._urlInputViewInfoDefault;
-		inputView.placeholder = 'https://example.com';
+		labeledInput.labelView.extendTemplate( { attributes: { class: 'label' } } );
+		labeledInput.inputView.placeholder = 'https://example.com';
+		labeledInput.labelView.extendTemplate( { attributes: { class: 'input' } } );
 
 		return labeledInput;
 	}
@@ -169,7 +174,7 @@ export default class MediaFormView extends View {
 
 		button.extendTemplate( {
 			attributes: {
-				class: className
+				class: [ className, 'button', 'button_theme-1' ]
 			}
 		} );
 
