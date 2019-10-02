@@ -53,7 +53,8 @@ module.exports = {
 		new webpack.BannerPlugin( {
 			banner: bundler.getLicenseBanner(),
 			raw: true
-		} )
+		} ),
+		new webpack.NormalModuleReplacementPlugin( /pilcrow\.svg/, './plus-circle-solid.svg' )
 	],
 
 	module: {
